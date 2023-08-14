@@ -20,7 +20,7 @@ export default function Spotify() {
           "Content-Type":"application/json",
       },
       });
-      console.log({data});
+      // console.log({data});
      
       const userInfo={
         userId:data.id,
