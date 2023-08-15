@@ -79,7 +79,7 @@ export default function Body() {
                 </span>
               </div>
             </div>
-            </div>
+            
             <div className='tracks'>
               {
                 selectedPlaylist.tracks.map(({id , name , artists, image , duration , album, context_uri, track_number,},index)=>{
@@ -88,7 +88,7 @@ export default function Body() {
                     <div className='col'>
                         <span>{index+1}</span>
                     </div>
-                    <div className='col detail'>
+                    <div className='detail'>
                       <div className='image'>
                       <img src={image} alt="track"/>
                       </div>  
@@ -111,6 +111,7 @@ export default function Body() {
               }
             
           </div>
+          </div>
         </>
       )
     }
@@ -120,4 +121,81 @@ export default function Body() {
 }
 
 const Container=styled.div`
+
+.playlist{
+  margin: 0 2rem;
+  display:flex;
+  align-items:center;
+  gap:2rem;
+  .image{
+    img{
+      height:15rem;
+      box-shadow:rgba(0,0,0,025) 0px 25px 50px -12px;
+
+    }
+  }
+  .details{
+    display:flex;
+    flex-direction:column;
+    gap:1rem;
+    color:#0edede;
+    .title{
+      font-size:4rem;
+      color:white;
+    }
+    
+  }
+
+
+}
+
+.list{
+  .header_row{
+    display:grid;
+    grid-template-columns:0.3fr 3fr 2fr 0.1fr;
+    color:#dddcdc;
+    margin:1rem 0 0 0;
+    position:sticky;
+    top:15vh;
+    padding:1rem 3rem;
+    transition: 0.3s ease-in-out;
+
+    
+  }
+  .tracks{
+    margin:0 2rem;
+    display:flex;
+    flex-direction:column;
+    margin-bottom:5rem;
+    .row{
+      padding:0.5rem 1rem;
+      display:grid;
+      grid-template-columns:0.3fr 3.1fr 1.9fr 0.1fr;
+      &:hover {
+        background: rgba(0, 0, 0,0.7);
+      }
+      .col{
+        display:flex;
+        align-items:center;
+        color:#dddcdc;
+        img{
+          height:40px;
+
+        }
+      }
+      .detail{
+      display:flex;
+      gap:1rem;
+      .info{
+        color:white;
+        display:flex;
+        flex-direction:column;
+      }
+
+    }
+    }
+   
+  }
+}
+
 `;
