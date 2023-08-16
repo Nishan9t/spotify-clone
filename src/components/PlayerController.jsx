@@ -52,7 +52,7 @@ export default function PlayerController() {
 
         const state= playerState? "pause":"play";
 
-        const response = await axios.put(`https://api.spotify.com/v1/me/player/${state}`,{},{
+        await axios.put(`https://api.spotify.com/v1/me/player/${state}`,{},{
             headers:{
                 Authorization:"Bearer "+token,
                 "Content-Type":"application/json",
