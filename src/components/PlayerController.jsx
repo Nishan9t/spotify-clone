@@ -25,6 +25,9 @@ export default function PlayerController() {
                     "Content-Type":"application/json",
                 },
             });
+
+           
+
             if(response.data !=="")
             {
                 const {item} = response.data;
@@ -43,7 +46,21 @@ export default function PlayerController() {
 
             }
        
-    }
+    };
+
+    const changeState=async()=>{
+
+        const state= playerState? "pause":"play";
+
+        const response = await axios.put(`https://api.spotify.com/v1/me/player/${state}`,{},{
+            headers:{
+                Authorization:"Bearer "+token,
+                "Content-Type":"application/json",
+            },
+        });
+        dispatch({type:reducerCases.SET_PLAYER_STATE,playerState : !playerState});
+    };
+
 
   return (
     <Container>
@@ -55,7 +72,7 @@ export default function PlayerController() {
             <CgPlayTrackPrev onClick={()=> changeTrack("previous")}/>
         </div>
         <div className='state'>
-            {playerState ? <BsFillPauseCircleFill/> : <BsFillPlayCircleFill/>}
+            {playerState ? <BsFillPauseCircleFill onClick={changeState}/> : <BsFillPlayCircleFill onClick={changeState}/>}
         </div>
         <div className='next' onClick={()=> changeTrack("next")}>
             <CgPlayTrackNext/>
